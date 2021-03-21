@@ -23,8 +23,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          password:              "password",
                                          password_confirmation: "password" } }
     end
-    follow_redirect!
+    follow_redirect! #指定されたリダイレクト先(users/show)へ飛べるか検証
     assert_template 'users/show'
-    assert_not flash.empty?
+    assert is_logged_in? #新規登録時にセッションが空じゃなければtrue
    end
 end
