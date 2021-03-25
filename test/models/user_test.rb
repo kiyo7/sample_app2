@@ -71,4 +71,8 @@ end
     @user.password = @user.password_confirmation = "a" * 5 #最小文字数の設定５文字で引っ掛かるようにする
     assert_not @user.valid?
   end
+  
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @user.authenticated?('')
+  end
 end
